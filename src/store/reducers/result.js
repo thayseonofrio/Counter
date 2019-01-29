@@ -5,6 +5,11 @@ const initialState = {
     results: []
 }
 
+const deleteResult = (state, action) => {
+    const updatedArray = state.results.filter(result => result.id !== action.resultElementId)
+    return updateObject(state, {results: updatedArray})
+};
+
 const resultReducer = (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.STORE_RESULT:
@@ -13,8 +18,7 @@ const resultReducer = (state = initialState, action) => {
                 id: new Date()
             })});
         case actionTypes.DELETE_RESULT:
-            const updatedArray = state.results.filter(result => result.id !== action.resultElementId);
-            return updateObject(state, {results: updatedArray})
+            return deleteResult(state, action);
         default:
             return state;
     }
