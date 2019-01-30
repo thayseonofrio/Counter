@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actionCreators from '../../store/actions/index';
+import Button from '../UI/Button/Button';
+
 class Counter extends Component {
 
     render() {
         return(
             <div>
                 <h1> Counter: {this.props.ctr}</h1>
-                <button onClick={this.props.onIncrementCounter}> Increment </button>
-                <button onClick={this.props.onDecrementCounter}> Decrement </button>
-                <button onClick={this.props.onAddCounter}> Add </button>
-                <button onClick={this.props.onSubtractCounter}> Subtract </button>
+                <Button clicked={this.props.onIncrementCounter} label="Increment"/>
+                <Button clicked={this.props.onDecrementCounter} label="Decrement"/>
+                <Button clicked={this.props.onAddCounter} label="Add"/>
+                <Button clicked={this.props.onSubtractCounter} label="Subtract"/>
                 <hr/>
                 <button onClick={() => this.props.onStoreResult(this.props.ctr)}> Store Result </button>
                 <ul>
